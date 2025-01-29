@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_174647) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_195222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,11 +29,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_174647) do
 
   create_table "humans", force: :cascade do |t|
     t.string "name"
-    t.string "humanable_type", null: false
-    t.bigint "humanable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["humanable_type", "humanable_id"], name: "index_humans_on_humanable"
+  end
+
+  create_table "mutants", force: :cascade do |t|
+    t.string "mutantable_type", null: false
+    t.bigint "mutantable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mutantable_type", "mutantable_id"], name: "index_mutants_on_mutantable"
+  end
+
+  create_table "non_mutants", force: :cascade do |t|
+    t.string "non_mutantable_type", null: false
+    t.bigint "non_mutantable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["non_mutantable_type", "non_mutantable_id"], name: "index_non_mutants_on_non_mutantable"
   end
 
   add_foreign_key "dnas", "humans"
