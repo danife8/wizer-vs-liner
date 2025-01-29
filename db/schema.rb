@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_051410) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'pg_catalog.plpgsql'
+  enable_extension "pg_catalog.plpgsql"
+
+  create_table "humans", force: :cascade do |t|
+    t.string "name"
+    t.string "humanable_type", null: false
+    t.bigint "humanable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["humanable_type", "humanable_id"], name: "index_humans_on_humanable"
+  end
 end
