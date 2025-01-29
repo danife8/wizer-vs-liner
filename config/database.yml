@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: wizeline_development
+
+test:
+  <<: *default
+  database: wizeline_test
+
+production:
+  <<: *default
+  database: wizeline_production
+  username: wizeline
+  password: <%= ENV['WIZELINE_DATABASE_PASSWORD'] %>
