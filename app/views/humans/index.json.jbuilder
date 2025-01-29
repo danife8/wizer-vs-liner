@@ -1,1 +1,3 @@
-json.array! @humans, partial: "humans/human", as: :human
+# frozen_string_literal: true
+
+json.array! @humans, partial: 'humans/human', as: :human

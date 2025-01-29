@@ -6,6 +6,12 @@ require:
   - rubocop-rspec
   - rubocop-rspec_rails
 
+Documentation:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Metrics/BlockLength:
   Max: 120
 

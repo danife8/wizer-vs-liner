@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class HumansController < ApplicationController
-  before_action :set_human, only: %i[ show update destroy ]
+  before_action :set_human, only: %i[show update destroy]
 
   # GET /humans
   # GET /humans.json
@@ -9,8 +11,7 @@ class HumansController < ApplicationController
 
   # GET /humans/1
   # GET /humans/1.json
-  def show
-  end
+  def show; end
 
   # POST /humans
   # POST /humans.json
@@ -41,13 +42,14 @@ class HumansController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_human
-      @human = Human.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def human_params
-      params.require(:human).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_human
+    @human = Human.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def human_params
+    params.expect(human: [:name])
+  end
 end
