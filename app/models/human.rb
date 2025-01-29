@@ -17,5 +17,7 @@
 #
 
 class Human < ApplicationRecord
+  ## ASSOCIATIONS
   belongs_to :humanable, polymorphic: true
+  has_one :dna, dependent: :destroy
 end

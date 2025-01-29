@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_051410) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_174647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "dnas", force: :cascade do |t|
+    t.string "row_0", limit: 6, array: true
+    t.string "row_1", limit: 6, array: true
+    t.string "row_2", limit: 6, array: true
+    t.string "row_3", limit: 6, array: true
+    t.string "row_4", limit: 6, array: true
+    t.string "row_5", limit: 6, array: true
+    t.bigint "human_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["human_id"], name: "index_dnas_on_human_id"
+  end
 
   create_table "humans", force: :cascade do |t|
     t.string "name"
@@ -22,4 +35,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_051410) do
     t.datetime "updated_at", null: false
     t.index ["humanable_type", "humanable_id"], name: "index_humans_on_humanable"
   end
+
+  add_foreign_key "dnas", "humans"
 end
