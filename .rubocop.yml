@@ -9,7 +9,7 @@ require:
 Documentation:
   Enabled: false
 
-RSpec/MultipleExpectations:
+Naming/VariableNumber:
   Enabled: false
 
 Metrics/BlockLength:
@@ -38,3 +38,6 @@ Style/IfUnlessModifier:
 
 Layout/LineLength:
   Max: 198
+
+RSpec/MultipleExpectations:
+  Enabled: false
