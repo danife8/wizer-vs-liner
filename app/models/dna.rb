@@ -24,16 +24,24 @@ class Dna < ApplicationRecord
   ## ASSOCIATIONS
   belongs_to :human
 
-  ## SERIALIZERS
-  serialize :row_0, Array
-  serialize :row_1, Array
-  serialize :row_2, Array
-  serialize :row_3, Array
-  serialize :row_4, Array
-  serialize :row_5, Array
+  ## VALIDATIONS
+  validates :row_0, :row_1, :row_2, :row_3, :row_4, :row_5, presence: true
+  validates :row_0, :row_1, :row_2, :row_3, :row_4, :row_5, length: { is: 6 }
+
+  ## CALLBACKS
+  before_validation :sanitize_dna_structure
+  after_save :is_mutant?
 
   ## INSTANCE METHODS
   def sequence
     [row_0, row_1, row_2, row_3, row_4, row_5]
+  end
+
+  def sanitize_dna_structure
+    (0..5).each do |i|
+      self["row_#{i}"].delete_if { |value| %w[a c g t A C G T].exclude?(value) }
+      self["row_#{i}"].map(&:upcase)
+      errors.add("row_#{i}", 'must contain only A, C, G, T characters') if self["row_#{i}"].length != 6
+    end
   end
 end

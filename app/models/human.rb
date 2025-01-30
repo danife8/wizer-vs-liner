@@ -15,4 +15,14 @@ class Human < ApplicationRecord
   has_one :dna, dependent: :destroy
   has_one :mutant, as: :mutantable, dependent: :destroy
   has_one :non_mutant, as: :non_mutantable, dependent: :destroy
+
+  ## SCOPES
+  scope :mutants, -> { joins(:mutant) }
+  scope :non_mutants, -> { joins(:non_mutant) }
+
+  ## VALIDATIONS
+  validates :dna, presence: true
+
+  ## NESTED ATTRIBUTES
+  accepts_nested_attributes_for :dna
 end
