@@ -39,5 +39,8 @@ Style/IfUnlessModifier:
 Layout/LineLength:
   Max: 198
 
+Rails/StrongParametersExpect:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
