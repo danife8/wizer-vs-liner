@@ -18,7 +18,7 @@ gem 'thruster', require: false
 group :development, :test do
   gem 'brakeman', require: false
   gem 'debug', '>= 1.0.0', require: false
-  gem 'rspec-rails', '~> 7.0.0'
+  gem 'rspec-rails', '~> 7.1.1'
   gem 'rubocop', require: false
   gem 'rubocop-rails', '~> 2.29', '>= 2.29.1', require: false
   gem 'rubocop-rspec_rails', '~> 2.30'
